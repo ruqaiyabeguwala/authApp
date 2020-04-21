@@ -1,0 +1,37 @@
+{
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.20.2"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BuilderIO/builder"
+  },
+  "scripts": {
+    "verify-git-not-dirty": "git diff --quiet || exit 1",
+    "_unlink": "lerna run _unlink --parallel",
+    "_install": "lerna run _install --parallel",
+    "install:packages": "npm run _install",
+    "dev:wc": "lerna run start --scope @builder.io/sdk --scope @builder.io/webcomponents --scope @builder.io/react --stream",
+    "bootstrap": "lerna bootstrap --force-local",
+    "reset": "npm run _install && npm run bootstrap && npm run _unlink",
+    "watch": "npm run start",
+    "develop": "npm run start",
+    "build": "lerna run build --stream --no-private --ignore @builder.io/plugin-loader --ignore @builder.io/widgets --ignore @builder.io/plugin-shopify",
+    "release:patch": "npm run verify-git-not-dirty && npm run build && lerna version patch --yes && lerna run build:unpkg:dist --no-private && lerna publish from-package --yes",
+    "release:minor": "npm run verify-git-not-dirty && npm run build && lerna version minor --yes && lerna run build:unpkg:dist --no-private && lerna publish from-package --yes",
+    "release:prerelease:dev": "npm run build && lerna version prerelease --yes && lerna run build:unpkg:dist --no-private && lerna publish from-package --dist-tag dev --yes",
+    "release:dev": "npm run release:prerelease:dev",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix react",
+    "dev": "concurrently \" npm run server \" \" npm run client \""
+  },
+  "dependencies": {
+    "@builder.io/react": "^1.1.13",
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.10",
+    "nodemon": "^2.0.3"
+  }
+}

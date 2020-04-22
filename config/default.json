@@ -1,4 +1,5 @@
 {
     "mongoURI":"mongodb+srv://ruqaiya:admin@cluster0-3tf2a.mongodb.net/test?retryWrites=true&w=majority",
-    "buildKey":"cf4859942e52424f854abb53f63e408c" 
+    "buildKey":"cf4859942e52424f854abb53f63e408c" ,
+    "jwtSecret":"mySecret"
 }

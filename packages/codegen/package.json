@@ -37,7 +37,7 @@
     "@types/json5": "0.0.30",
     "@types/lodash": "^4.14.149",
     "json5": "^2.1.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "prettier": "^2.0.2"
   },
   "gitHead": "80b949340172486e52bb8e8995af61fa333d1435"
